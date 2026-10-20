@@ -5,8 +5,8 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import io.github.nexalloy.callMethod
-import io.github.nexalloy.getObjectField
+import io.github.nexalloy.callMethodOrNull
+import io.github.nexalloy.getObjectFieldOrNull
 import io.github.nexalloy.patch
 
 val OpenExternalLinks = patch(
@@ -17,10 +17,11 @@ val OpenExternalLinks = patch(
         before {
             val context = it.args[0] as? Context ?: return@before
             val target = it.args[1] ?: return@before
-            val params = target.getObjectField("defaultParams") as? Map<*, *>
-            val scene = target.getObjectField("seclinkConfig")?.callMethod("getScene")
+            // SparkThirdContext fields differ across versions, a missing one means the scene is not bio_url
+            val params = target.getObjectFieldOrNull("defaultParams") as? Map<*, *>
+            val scene = target.getObjectFieldOrNull("seclinkConfig")?.callMethodOrNull("getScene")
             if (scene == "bio_url" || params?.get("sec_link_scene") == "bio_url") {
-                if (openBrowser(context, target.getObjectField("url") as? String)) it.result = null
+                if (openBrowser(context, target.getObjectFieldOrNull("url") as? String)) it.result = null
             }
         }
     }
