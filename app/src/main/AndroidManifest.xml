@@ -10,6 +10,8 @@
         <package android:name="com.google.android.youtube" />
         <package android:name="com.google.android.apps.youtube.music" />
         <package android:name="com.reddit.frontpage" />
+        <package android:name="com.ss.android.ugc.trill" />
+        <package android:name="com.zhiliaoapp.musically" />
         <package android:name="com.google.android.apps.photos" />
         <package android:name="com.microblink.photomath" />
         <package android:name="com.instagram.android" />

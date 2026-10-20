@@ -72,6 +72,15 @@
 - Sanitize sharing links
 - Start as guest
 
+### TikTok
+- Hide For You feed ads
+- Downloads without watermark
+- Disable screen capture detection
+- Stop video looping
+- Show seekbar
+- Open profile links externally
+- Hide profile recommendations
+
 ### Google Photos
 - Spoof Pixel XL
 
@@ -101,3 +110,5 @@ or [Create an issue](https://github.com/NexAlloy/NexAlloy/issues/new/choose)
 [DexKit](https://luckypray.org/DexKit/en/): a high-performance dex runtime parsing library.  
 [Morphe](https://morphe.software): Transform Your Android Apps  
 [ReVanced](https://revanced.app): Continuing the legacy of Vanced at [revanced.app](https://revanced.app)
+
+[Metra TikTok patches](https://github.com/icysymmetra/tiktok-patches-for-morphe): TikTok patch behavior and fingerprints.
