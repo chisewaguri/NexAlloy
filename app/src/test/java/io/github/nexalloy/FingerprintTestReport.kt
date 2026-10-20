@@ -36,6 +36,8 @@ object FingerprintTestReport {
         path.name.startsWith("com.google.android.youtube") -> "youtube"
         path.name.startsWith("com.google.android.apps.youtube.music") -> "music"
         path.name.startsWith("com.reddit.frontpage") -> "reddit"
+        path.name.startsWith("com.ss.android.ugc.trill") ||
+            path.name.startsWith("com.zhiliaoapp.musically") -> "tiktok"
         else -> null
     }
 
