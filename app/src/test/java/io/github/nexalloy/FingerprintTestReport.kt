@@ -38,6 +38,9 @@ object FingerprintTestReport {
         path.name.startsWith("com.reddit.frontpage") -> "reddit"
         path.name.startsWith("com.ss.android.ugc.trill") ||
             path.name.startsWith("com.zhiliaoapp.musically") -> "tiktok"
+        path.name.startsWith("jp.co.shueisha.mangaplus") -> "mangaplus"
+        path.name.startsWith("com.cloudflare.onedotonedotonedotone") -> "warp"
+        path.name.startsWith("com.snowcorp.stickerly.android") -> "stickerly"
         else -> null
     }
 
