@@ -21,6 +21,7 @@
         <package android:name="jp.co.shueisha.mangaplus" />
         <package android:name="com.cloudflare.onedotonedotonedotone" />
         <package android:name="com.snowcorp.stickerly.android" />
+        <package android:name="jp.pxv.android" />
     </queries>
 
     <application
