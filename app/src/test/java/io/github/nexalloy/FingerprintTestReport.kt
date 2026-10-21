@@ -41,6 +41,7 @@ object FingerprintTestReport {
         path.name.startsWith("jp.co.shueisha.mangaplus") -> "mangaplus"
         path.name.startsWith("com.cloudflare.onedotonedotonedotone") -> "warp"
         path.name.startsWith("com.snowcorp.stickerly.android") -> "stickerly"
+        path.name.startsWith("jp.pxv.android") -> "pixiv"
         else -> null
     }
 

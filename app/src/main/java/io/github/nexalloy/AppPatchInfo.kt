@@ -3,6 +3,7 @@ package io.github.nexalloy
 import io.github.nexalloy.hoodles.morphe.alltrails.AllTrailsPatches
 import io.github.nexalloy.morphe.mangaplus.MangaPlusPatches
 import io.github.nexalloy.morphe.music.YTMusicPatches
+import io.github.nexalloy.morphe.pixiv.PixivPatches
 import io.github.nexalloy.morphe.reddit.RedditPatches
 import io.github.nexalloy.morphe.stickerly.StickerlyPatches
 import io.github.nexalloy.morphe.tiktok.TikTokPatches
@@ -30,6 +31,7 @@ val appPatchConfigurations = listOf(
     AppPatchInfo("MANGA Plus", "jp.co.shueisha.mangaplus", MangaPlusPatches),
     AppPatchInfo("1.1.1.1", "com.cloudflare.onedotonedotonedotone", WarpPatches),
     AppPatchInfo("Sticker.ly", "com.snowcorp.stickerly.android", StickerlyPatches),
+    AppPatchInfo("pixiv", "jp.pxv.android", PixivPatches),
 )
 
 val patchesByPackage = appPatchConfigurations.associate { it.packageName to it.patches }
