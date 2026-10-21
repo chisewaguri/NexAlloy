@@ -100,6 +100,17 @@
 ### AllTrails
 - Enable Peak membership
 
+### MANGA Plus
+- Unlock Deluxe
+
+### 1.1.1.1
+- Spoof WARP+ Unlimited UI
+- Disable analytics
+- Disable SSL pinning
+
+### Sticker.ly
+- Unlock Plus
+
 ## Supports
 [![Discord Server](https://img.shields.io/badge/Join-Discord-5865F2.svg?logo=discord)](https://discord.gg/QWUrAA2mKq)  
 [![FAQ](https://img.shields.io/badge/Read-FAQ-orange.svg?logo=github)](https://github.com/NexAlloy/NexAlloy/wiki/Frequently-Asked-Questions)  
@@ -111,4 +122,5 @@ or [Create an issue](https://github.com/NexAlloy/NexAlloy/issues/new/choose)
 [Morphe](https://morphe.software): Transform Your Android Apps  
 [ReVanced](https://revanced.app): Continuing the legacy of Vanced at [revanced.app](https://revanced.app)
 
-[Metra TikTok patches](https://github.com/icysymmetra/tiktok-patches-for-morphe): TikTok patch behavior and fingerprints.
+[Metra TikTok patches](https://github.com/icysymmetra/tiktok-patches-for-morphe): TikTok patch behavior and fingerprints.  
+[rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches): MANGA Plus, 1.1.1.1 and Sticker.ly patch behavior and fingerprints.

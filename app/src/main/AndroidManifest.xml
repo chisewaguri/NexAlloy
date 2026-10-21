@@ -18,6 +18,9 @@
         <package android:name="com.instagram.barcelona" />
         <package android:name="com.strava" />
         <package android:name="com.alltrails.alltrails" />
+        <package android:name="jp.co.shueisha.mangaplus" />
+        <package android:name="com.cloudflare.onedotonedotonedotone" />
+        <package android:name="com.snowcorp.stickerly.android" />
     </queries>
 
     <application
