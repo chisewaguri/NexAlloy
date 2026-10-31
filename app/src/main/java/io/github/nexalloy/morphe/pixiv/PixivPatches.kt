@@ -3,8 +3,11 @@ package io.github.nexalloy.morphe.pixiv
 import android.accounts.Account
 import android.accounts.AccountManager
 import de.robv.android.xposed.XC_MethodReplacement
+import de.robv.android.xposed.XposedBridge
 import io.github.nexalloy.hookMethod
 import io.github.nexalloy.patch
+
+const val POPULAR_PICKS_MIN_BOOKMARKS = "pixiv_popular_min_bookmarks"
 
 val UnlockPremium = patch(
     name = "Unlock premium",
@@ -18,4 +21,29 @@ val UnlockPremium = patch(
     }
 }
 
-val PixivPatches = arrayOf(UnlockPremium)
+val FreePopularSearchPatch = patch(
+    name = "Free popular search",
+    description = "Shows Pixiv's preview first, then popular tagged works in stable batches ranked by bookmark count. " +
+        "Supports keyword, AI and date filters. Untagged works may be missed. " +
+        "Other filters and gender rankings use normal search.",
+    use = false,
+) {
+    dependsOn(UnlockPremium)
+    val preferences = xposed.getRemotePreferences(lpparam.packageName)
+    val search = FreePopularSearch(classLoader, minimumBookmarks = {
+        preferences?.getString(POPULAR_PICKS_MIN_BOOKMARKS, "0")?.toIntOrNull()?.coerceAtLeast(0) ?: 0
+    })
+    OkHttpNewCallFingerprint.hookMethod {
+        before { param ->
+            if (search.matches(param.args[0])) {
+                val newCall = param.method
+                val client = search.wrapClient(param.thisObject) { originalClient, request ->
+                    XposedBridge.invokeOriginalMethod(newCall, originalClient, arrayOf(request))!!
+                }
+                param.result = XposedBridge.invokeOriginalMethod(newCall, client, param.args)
+            }
+        }
+    }
+}
+
+val PixivPatches = arrayOf(UnlockPremium, FreePopularSearchPatch)

@@ -158,6 +158,7 @@ dependencies {
     testImplementation(libs.junit.jupiter.params)
     testImplementation(libs.jadx.core)
     testImplementation(libs.slf4j.simple)
+    testImplementation("com.squareup.okhttp3:okhttp")
     debugImplementation(kotlin("reflect"))
     compileOnly(libs.xposed)
     compileOnly(libs.libxposed.api)

@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Vibrator
 import android.preference.CheckBoxPreference
+import android.preference.ListPreference
 import android.preference.Preference
 import android.preference.PreferenceFragment
 import android.provider.Settings
@@ -18,6 +19,7 @@ import android.widget.Button
 import io.github.libxposed.service.XposedService
 import io.github.nexalloy.R
 import io.github.nexalloy.appPatchConfigurations
+import io.github.nexalloy.morphe.pixiv.POPULAR_PICKS_MIN_BOOKMARKS
 
 class AppPatchSettingsActivity : Activity() {
 
@@ -144,7 +146,24 @@ class AppPatchSettingsActivity : Activity() {
                     }
                 }
 
+                if (appPatchInfo.packageName == "jp.pxv.android") {
+                    ListPreference(context).apply {
+                        key = POPULAR_PICKS_MIN_BOOKMARKS
+                        title = "Popular picks minimum bookmarks"
+                        entries = arrayOf("No minimum", "100", "500", "1,000", "5,000", "10,000", "50,000", "100,000")
+                        entryValues = arrayOf("0", "100", "500", "1000", "5000", "10000", "50000", "100000")
+                        isPersistent = false
+                        value = remotePrefs.getString(key, "0")
+                        summary = "%s"
+                        setOnPreferenceChangeListener { _, newValue ->
+                            remotePrefs.edit().putString(key, newValue as String).apply()
+                            true
+                        }
+                        screen.addPreference(this)
+                    }
+                }
                 preferenceScreen = screen
+                screen.findPreference(POPULAR_PICKS_MIN_BOOKMARKS)?.dependency = "Free popular search"
             }
         }
 
@@ -170,6 +189,9 @@ class AppPatchSettingsActivity : Activity() {
                     preference.isChecked =
                         defaultPatchStates[preference.key] ?: preference.isChecked
                     editor.putBoolean(preference.key, preference.isChecked)
+                } else if (preference is ListPreference && preference.key == POPULAR_PICKS_MIN_BOOKMARKS) {
+                    preference.value = "0"
+                    editor.putString(preference.key, "0")
                 }
             }
             editor.apply()

@@ -120,6 +120,7 @@
 
 ### pixiv
 - Unlock locally checked Premium features. Server-side features, including full popularity sorting, still require a Premium subscription.
+- Free popular search (optional): shows Pixiv's preview first, then paginated popularity-tag results. It removes duplicates, checks actual bookmark counts and ranks unseen works in stable batches. One batch is prefetched, and recent results are cached in memory. Set a minimum bookmark count in NexAlloy's pixiv settings, then restart pixiv. Use keyword, AI and date filters. Untagged works may be missed, and results are not a complete global ranking. Other filters and gender-specific rankings keep normal server search.
 
 ## Supports
 [![Discord Server](https://img.shields.io/badge/Join-Discord-5865F2.svg?logo=discord)](https://discord.gg/QWUrAA2mKq)  

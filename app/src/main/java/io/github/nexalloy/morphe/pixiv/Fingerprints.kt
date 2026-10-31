@@ -14,3 +14,17 @@ internal object OAuthUserIsPremiumFingerprint : Fingerprint(
         fieldAccess(definingClass = OAUTH_USER, name = "isPremium", opcode = Opcode.IGET_BOOLEAN),
     ),
 )
+
+internal object OkHttpNewCallFingerprint : Fingerprint(
+    definingClass = "Lokhttp3/OkHttpClient;",
+    name = "newCall",
+    returnType = "Lokhttp3/Call;",
+    parameters = listOf("Lokhttp3/Request;"),
+)
+
+internal object PreviewResponseBodyFactoryFingerprint : Fingerprint(
+    definingClass = "Lokhttp3/ResponseBody;",
+    name = "create",
+    returnType = "Lokhttp3/ResponseBody;",
+    parameters = listOf("Ljava/lang/String;", "Lokhttp3/MediaType;"),
+)
