@@ -210,3 +210,9 @@ private fun watchNextRowsMatch() = WatchNextResponseParserFingerprint.instructio
 
 val watchNextRowsMethod = findMethodDirect { watchNextRowsMatch().method }
 val watchNextSectionsField = findFieldDirect { watchNextRowsMatch().instructionMatches.first().instruction.fieldRef!! }
+internal val watchNextItemSectionField = findFieldDirect {
+    watchNextRowsMatch().instructionMatches.last().instruction.fieldRef!!
+}
+internal val watchNextSectionIdentifierField = findFieldDirect {
+    RelatedItemSectionFingerprint.instructionMatches[1].instruction.fieldRef!!
+}

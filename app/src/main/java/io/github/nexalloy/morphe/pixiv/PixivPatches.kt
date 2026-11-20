@@ -46,4 +46,22 @@ val FreePopularSearchPatch = patch(
     }
 }
 
-val PixivPatches = arrayOf(UnlockPremium, FreePopularSearchPatch)
+private val LimitHomePagination = patch(
+    name = "Disable home illustration pagination",
+    description = "Keeps the first page of home illustration and manga recommendations.",
+    use = false,
+) {
+    HomeIllustrationsNextUrlFingerprint.hookMethod(XC_MethodReplacement.returnConstant(null))
+}
+
+private val HideHomeRecommendations = patch(
+    name = "Hide home illustration recommendations",
+    description = "Removes recommended illustrations and manga from Home while keeping rankings.",
+    use = false,
+) {
+    val illustrations = HomeIllustrationsFingerprint.member
+    dependsOn(LimitHomePagination)
+    illustrations.hookMethod(XC_MethodReplacement.returnConstant(emptyList<Any>()))
+}
+
+val PixivPatches = arrayOf(UnlockPremium, FreePopularSearchPatch, LimitHomePagination, HideHomeRecommendations)

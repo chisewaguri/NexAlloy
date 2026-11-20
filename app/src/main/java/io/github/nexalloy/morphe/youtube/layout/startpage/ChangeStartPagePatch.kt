@@ -9,6 +9,21 @@ import io.github.nexalloy.morphe.youtube.misc.settings.PreferenceScreen
 import io.github.nexalloy.patch
 import io.github.nexalloy.scopedHook
 
+@Volatile
+internal var skipHomeGuideMilestone = false
+
+internal val GuideMilestoneHook = patch {
+    // A cold guide otherwise waits for Home before populating the navigation bars.
+    GuideRequestFingerprint.hookMethod(scopedHook(::guideMilestoneMethod.method) {
+        after {
+            if (it.args[0] == 1074004527 || it.args[0] == 268698159) {
+                it.result = if (skipHomeGuideMilestone) 1
+                else ChangeStartPagePatch.overrideGuideMilestone(it.result as Int)
+            }
+        }
+    })
+}
+
 val changeStartPagePatch = patch(
     name = "Change start page",
     description = "Adds an option to set which page the app opens in instead of the homepage.",
@@ -37,14 +52,5 @@ val changeStartPagePatch = patch(
         }
     }
 
-    // Without a guide in the cache, the top bar and the navigation bar wait for a milestone
-    // that is reached when the homepage is shown.
-    GuideRequestFingerprint.hookMethod(scopedHook(::guideMilestoneMethod.method) {
-        after {
-            if (it.args[0] == 1074004527 || it.args[0] == 268698159) {
-                it.result = ChangeStartPagePatch.overrideGuideMilestone(it.result as Int)
-            }
-        }
-    })
-
+    dependsOn(GuideMilestoneHook)
 }
