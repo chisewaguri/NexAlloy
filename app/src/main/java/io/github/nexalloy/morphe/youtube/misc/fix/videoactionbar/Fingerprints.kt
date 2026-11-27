@@ -183,11 +183,12 @@ val protobufListMutableCopyMethod = findMethodDirect {
     protobufListMatch().instructionMatches.last().instruction.methodRef!!
 }
 
-@get:AllowAbstract
-val protobufListMakeImmutableMethod = findMethodDirect {
-    val listType = protobufListIsModifiableMethod().declaredClass!!.descriptor
-    Fingerprint(definingClass = listType, returnType = "V", parameters = emptyList())()
-}
+@AllowAbstract
+internal object ProtobufListMakeImmutableFingerprint : Fingerprint(
+    definingClass = { protobufListIsModifiableMethod().declaredClass!!.descriptor },
+    returnType = "V",
+    parameters = emptyList()
+)
 
 context(dexkit: DexKitBridge)
 private fun watchNextRowsMatch() = WatchNextResponseParserFingerprint.instructionMatches[2]
@@ -209,3 +210,9 @@ private fun watchNextRowsMatch() = WatchNextResponseParserFingerprint.instructio
 
 val watchNextRowsMethod = findMethodDirect { watchNextRowsMatch().method }
 val watchNextSectionsField = findFieldDirect { watchNextRowsMatch().instructionMatches.first().instruction.fieldRef!! }
+internal val watchNextItemSectionField = findFieldDirect {
+    watchNextRowsMatch().instructionMatches.last().instruction.fieldRef!!
+}
+internal val watchNextSectionIdentifierField = findFieldDirect {
+    RelatedItemSectionFingerprint.instructionMatches[1].instruction.fieldRef!!
+}

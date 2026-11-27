@@ -1,6 +1,7 @@
 package io.github.nexalloy
 
 import io.github.nexalloy.hoodles.morphe.alltrails.AllTrailsPatches
+import io.github.nexalloy.morphe.instagram.InstagramPatches
 import io.github.nexalloy.morphe.mangaplus.MangaPlusPatches
 import io.github.nexalloy.morphe.music.YTMusicPatches
 import io.github.nexalloy.morphe.pixiv.PixivPatches
@@ -24,7 +25,7 @@ val appPatchConfigurations = listOf(
     AppPatchInfo("TikTok Global", "com.zhiliaoapp.musically", TikTokPatches),
     AppPatchInfo("Google Photos", "com.google.android.apps.photos", GooglePhotosPatches),
     AppPatchInfo("Photomath", "com.microblink.photomath", PhotomathPatches),
-    AppPatchInfo("Instagram", "com.instagram.android", MetaPatches),
+    AppPatchInfo("Instagram", "com.instagram.android", InstagramPatches),
     AppPatchInfo("Threads", "com.instagram.barcelona", MetaPatches),
     AppPatchInfo("Strava", "com.strava", StravaPatches),
     AppPatchInfo("AllTrails", "com.alltrails.alltrails", AllTrailsPatches),

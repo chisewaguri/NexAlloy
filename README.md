@@ -66,6 +66,9 @@
 - Change start page
 - Channel search
 - Channel whitelist
+- Block Shorts cards, the Shorts tab and navigation into the Shorts player
+- Open Subscriptions in place of Home or Explore recommendations
+- Hide related videos and stop recommended videos from autoplaying
 
 ### YouTube Music
 - Remove music video ads
@@ -96,6 +99,11 @@
 
 ### Instagram
 - Hide ads
+- Hide Reels on Home and in navigation, including the profile Reels tab and dedicated Reels links
+- Remove Explore recommendations while keeping search available
+- Hide suggested home content and suggested accounts
+- Request a Following-only home feed
+- Disable home feed pagination or remove home feed posts entirely
 
 ### Threads
 - Hide ads
@@ -121,6 +129,26 @@
 ### pixiv
 - Unlock locally checked Premium features. Server-side features, including full popularity sorting, still require a Premium subscription.
 - Free popular search (optional): shows Pixiv's preview first, then paginated popularity-tag results. It removes duplicates, checks actual bookmark counts and ranks unseen works in stable batches. One batch is prefetched, and recent results are cached in memory. Set a minimum bookmark count in NexAlloy's pixiv settings, then restart pixiv. Use keyword, AI and date filters. Untagged works may be missed, and results are not a complete global ranking. Other filters and gender-specific rankings keep normal server search.
+- Hide home illustration and manga recommendations or disable their pagination
+
+### Distraction controls
+
+The distraction controls are off by default. Enable them in the relevant app's patch list in NexAlloy, then restart the target app. Instagram's Following and pagination controls are separate. Following requests use Instagram's native feed source. Mutual-only filtering is unavailable.
+
+### Local patch compatibility
+
+These APK versions passed the fingerprint suite. Fingerprint tests verify that patch targets resolve in the APK.
+
+| App | Tested version |
+| --- | --- |
+| pixiv | 6.205.0 |
+| Sticker.ly | 3.42.0 |
+| MANGA Plus | 2.7.2 |
+| 1.1.1.1 + WARP | 6.38.12 |
+| TikTok Global | 47.9.3 |
+| TikTok Asia | 47.1.4 |
+| Instagram | 457.0.0.55.73 |
+| YouTube | 21.47.483 |
 
 ## Supports
 [![Discord Server](https://img.shields.io/badge/Join-Discord-5865F2.svg?logo=discord)](https://discord.gg/QWUrAA2mKq)  

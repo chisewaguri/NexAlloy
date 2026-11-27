@@ -26,6 +26,11 @@ import io.github.nexalloy.morphe.youtube.interaction.swipecontrols.SwipeControls
 import io.github.nexalloy.morphe.youtube.layout.branding.header.changeHeaderPatch
 import io.github.nexalloy.morphe.youtube.layout.buttons.action.HideVideoActionButtons
 import io.github.nexalloy.morphe.youtube.layout.buttons.navigation.NavigationBar
+import io.github.nexalloy.morphe.youtube.layout.distraction.BlockShorts
+import io.github.nexalloy.morphe.youtube.layout.distraction.HideExploreRecommendations
+import io.github.nexalloy.morphe.youtube.layout.distraction.HideHomeRecommendations
+import io.github.nexalloy.morphe.youtube.layout.distraction.HideRelatedVideos
+import io.github.nexalloy.morphe.youtube.layout.distraction.StopAutoplayRecommendations
 import io.github.nexalloy.morphe.youtube.layout.captions.AutoCaptions
 import io.github.nexalloy.morphe.youtube.layout.dearrow.deArrowPatch
 import io.github.nexalloy.morphe.youtube.layout.flyout.addToQueuePatch
@@ -126,6 +131,11 @@ val YouTubePatches = arrayOf(
     BypassImageRegionRestrictionsPatch,
     CheckRecycleBitmapMediaSession,
     changeStartPagePatch,
+    BlockShorts,
+    HideHomeRecommendations,
+    HideExploreRecommendations,
+    HideRelatedVideos,
+    StopAutoplayRecommendations,
     channelSearchPatch,
     channelWhitelistPatch,
     // make sure settingsHook at end to build preferences

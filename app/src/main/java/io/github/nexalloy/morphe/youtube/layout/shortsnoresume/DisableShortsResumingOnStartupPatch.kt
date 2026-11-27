@@ -11,15 +11,14 @@ import io.github.nexalloy.morphe.youtube.misc.settings.PreferenceScreen
 import io.github.nexalloy.patch
 import io.github.nexalloy.scopedHook
 
-val DisableShortsResumingOnStartup = patch(
-    name = "Disable Shorts resuming on startup",
-    description = "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
-) {
-    dependsOn(VersionCheck)
+@Volatile
+internal var blockShortsResume = false
 
-    PreferenceScreen.SHORTS.addPreferences(
-        SwitchPreference("morphe_disable_shorts_resuming_on_startup"),
-    )
+private fun allowShortsResume(original: Boolean) =
+    !blockShortsResume && DisableShortsResumingOnStartupPatch.disableShortsResumingOnStartup(original)
+
+internal val ShortsResumeHook = patch {
+    dependsOn(VersionCheck)
 
     if (is_21_03_or_greater) {
         (if (is_21_41_or_greater) UserWasInShortsEvaluateFingerprint
@@ -29,16 +28,22 @@ val DisableShortsResumingOnStartup = patch(
                 UserWasInShortsEvaluateAnchorFingerprint.method
             ) {
                 after {
-                    it.result =
-                        DisableShortsResumingOnStartupPatch.disableShortsResumingOnStartup(it.result as Boolean)
+                    it.result = allowShortsResume(it.result as Boolean)
                 }
             })
     } else {
         // TODO
     }
 
-    insertLiteralOverride(
-        45358360L,
-        DisableShortsResumingOnStartupPatch::disableShortsResumingOnStartup
+    insertLiteralOverride(45358360L, ::allowShortsResume)
+}
+
+val DisableShortsResumingOnStartup = patch(
+    name = "Disable Shorts resuming on startup",
+    description = "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+) {
+    dependsOn(ShortsResumeHook)
+    PreferenceScreen.SHORTS.addPreferences(
+        SwitchPreference("morphe_disable_shorts_resuming_on_startup"),
     )
 }
