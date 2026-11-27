@@ -135,6 +135,21 @@
 
 The distraction controls are off by default. Enable them in the relevant app's patch list in NexAlloy, then restart the target app. Instagram's Following and pagination controls are separate. Following requests use Instagram's native feed source. Mutual-only filtering is unavailable.
 
+### Local patch compatibility
+
+These APK versions passed the fingerprint suite. Fingerprint tests verify that patch targets resolve in the APK.
+
+| App | Tested version |
+| --- | --- |
+| pixiv | 6.205.0 |
+| Sticker.ly | 3.42.0 |
+| MANGA Plus | 2.7.2 |
+| 1.1.1.1 + WARP | 6.38.12 |
+| TikTok Global | 47.9.3 |
+| TikTok Asia | 47.1.4 |
+| Instagram | 457.0.0.55.73 |
+| YouTube | 21.47.483 |
+
 ## Supports
 [![Discord Server](https://img.shields.io/badge/Join-Discord-5865F2.svg?logo=discord)](https://discord.gg/QWUrAA2mKq)  
 [![FAQ](https://img.shields.io/badge/Read-FAQ-orange.svg?logo=github)](https://github.com/NexAlloy/NexAlloy/wiki/Frequently-Asked-Questions)  
